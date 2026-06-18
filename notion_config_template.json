@@ -1,0 +1,17 @@
+{
+  "_说明": "复制此文件为 notion_config.json，填入你的 Notion 数据库ID",
+  "al_rose_db_id": "YOUR_NOTION_DATABASE_ID_HERE",
+  "_如何获取数据库ID": "在 Notion 中打开数据库页面，URL 中 notion.so/xxxx?v=yyyy 里 xxxx 就是 database ID（32位字符串）",
+  "_数据库字段说明": {
+    "Name": "标题：日期+日型，如 2025-04-21 大幅低开",
+    "日期": "Date 类型",
+    "日型": "Select 类型，选项：大幅高开/大幅低开/平开趋势/平开区间/反转日/大波动区间日",
+    "主讲人": "Multi-Select 类型，选项：Al Brooks/Rose/学生/客串",
+    "技巧标签": "Multi-Select 类型，选项：卖出高潮/三腿/II形态/Globex判断/整数关口/均线目标/R倍数/停止单/棒体收盘/腿计数/楔形/三角旗形/缺口日/内部棒/假突破",
+    "最终结构": "Select 类型，选项：多头趋势日/空头趋势日/震荡区间日/多头反转/空头反转/混合",
+    "当日最低": "Number 类型",
+    "当日最高": "Number 类型",
+    "分析文件": "URL 类型（本地文件路径）",
+    "场次摘要": "Text 类型，1-2句描述这期核心内容"
+  }
+}

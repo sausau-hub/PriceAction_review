@@ -1,0 +1,11 @@
+{
+  "video_sessions_db_id": "b99d60a3-eb57-4eaf-8d1c-d138531e1a12",
+  "knowledge_rules_db_id": "9548f67e-5590-4d3b-be09-ace2f790c40b",
+  "daily_review_db_id": "e47c23af-d932-49cb-bf87-f5fcce59f6db",
+  "comment": "视频分析场次库 + 知识库规则库 + 视频复盘库，2026-06-18 创建",
+  "databases": {
+    "📹 Rose 视频分析场次": "b99d60a3-eb57-4eaf-8d1c-d138531e1a12",
+    "📖 AL_Rose 知识库规则": "9548f67e-5590-4d3b-be09-ace2f790c40b",
+    "🎥 视频复盘": "e47c23af-d932-49cb-bf87-f5fcce59f6db"
+  }
+}

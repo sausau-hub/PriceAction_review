@@ -1,0 +1,18 @@
+# 依赖目录
+node_modules/
+
+# 外部依赖（独立 clone：github.com/tradesdontlie/tradingview-mcp）
+tradingview-mcp/
+
+# 临时抓取的 K线数据（可按需重新生成）
+chart_data*.json
+
+# 截图
+screenshots/
+
+# Claude Code 会话数据
+.claude/
+
+# Python 缓存
+__pycache__/
+*.pyc
