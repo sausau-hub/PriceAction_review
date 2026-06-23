@@ -23,3 +23,16 @@ __pycache__/
 # 个人复盘日志（各自保留）
 实盘分析/
 复盘日志/
+
+# API 密钥（绝对不能上传）
+.env
+
+# 临时生成文件（可重新生成）
+deepseek_input*.txt
+deepseek_output*.txt
+deepseek_output_verified.txt
+srt_clean*.txt
+m5_table*.txt
+test_decode.txt
+_test_notion.json
+notion_video_*.json
