@@ -32,6 +32,7 @@
 | [TradingView Desktop](https://www.tradingview.com/desktop/) | 拉取 K 线数据（需付费订阅） |
 | [tradingview-mcp](https://github.com/tradesdontlie/tradingview-mcp) | TradingView ↔ Claude Code 桥接 |
 | [Notion](https://www.notion.so/) | 存储分析结果（可选，免费账号即可） |
+| [DeepSeek API](https://platform.deepseek.com) | 长文本生成辅助（可选，替代 Claude 处理大 token 任务） |
 | Al Brooks / Rose 视频字幕 `.srt` 文件 | 分析素材，自行获取 |
 
 ---
@@ -41,8 +42,8 @@
 ### 1. 克隆项目
 
 ```bash
-git clone https://github.com/laizheqixi-web/PA-Agent-.git
-cd PA-Agent-
+git clone https://github.com/sausau-hub/PriceAction_review.git
+cd PriceAction_review
 ```
 
 ### 2. 安装 TradingView MCP
@@ -55,7 +56,16 @@ npm install
 
 参考 [tradingview-mcp 文档](https://github.com/tradesdontlie/tradingview-mcp) 配置 MCP 连接。
 
-### 3. 配置 Notion（可选）
+### 3. 配置环境变量
+
+复制并编辑 `.env`：
+
+```
+DEEPSEEK_API_KEY=your_deepseek_key   # 可选
+NOTION_TOKEN=your_notion_token       # 可选
+```
+
+### 4. 配置 Notion（可选）
 
 复制配置模板：
 
@@ -71,15 +81,15 @@ cp notion_config_template.json notion_config.json
 python create_notion_dbs.py
 ```
 
-### 4. 修改路径
+### 5. 修改路径
 
 打开 `CLAUDE.md`，将所有路径替换为你本机的实际路径。
 
-### 5. 启动 TradingView 调试模式
+### 6. 启动 TradingView 调试模式
 
 **Windows：**
 ```bash
-scripts\launch_tv_debug.bat
+python start_tradingview.py
 ```
 
 ---
@@ -109,6 +119,20 @@ scripts\launch_tv_debug.bat
 
 ---
 
+## 个人过滤器
+
+`知识库/我的交易关注点.md` 是提升分析质量的关键。
+
+AI 分析 5 小时视频时默认会压缩大量内容，但每个人的交易系统关注点不同。通过这个文件告诉 AI：
+
+- **必须完整保留**的技术维度（入场条件、止损逻辑、"为什么不进场"）
+- **可以忽略**的内容（scalp、期权讨论）
+- **自己目前理解有偏差**的地方（AI 会重点展开这些，而非泛泛而谈）
+
+模板在仓库里，按自己的交易系统填写即可。
+
+---
+
 ## 知识库
 
 `知识库/AL_Rose_迭代知识库.md` 是本项目的核心资产。
@@ -124,21 +148,21 @@ scripts\launch_tv_debug.bat
 ## 目录结构
 
 ```
-PA-Agent-/
+PriceAction_review/
 ├── CLAUDE.md                          # 项目主配置，Claude Code 读取
 ├── .claude/
 │   └── agents/
 │       ├── rose-video-analyst.md      # Agent 1：视频分析
 │       └── alrose-daily-reviewer.md   # Agent 3：实盘复盘
-├── 技能配置/
-│   ├── SKILL_iterate-al-rose.md       # Agent 2：知识库迭代
-│   └── SKILL_alrose-daily-review.md   # 复盘技能
 ├── 知识库/
-│   ├── AL_Rose_迭代知识库.md          # 知识库（starter 版）
-│   └── Rose_AlBrooks_分析系统提示词.md # 分析参考
-├── 视频分析/                           # 示例输出
-├── scripts/
-│   └── get_chart_data.mjs             # 拉取 K 线数据
+│   ├── AL_Rose_迭代知识库.md          # 知识库（starter 版，5期）
+│   ├── Rose_AlBrooks_分析系统提示词.md # 分析参考
+│   └── 我的交易关注点.md              # 个人过滤器模板
+├── 视频分析/                           # 示例分析输出
+├── get_chart_data.mjs                 # 拉取 TradingView K 线数据
+├── start_tradingview.py               # 自动启动 TradingView 调试模式
+├── call_deepseek.py                   # DeepSeek API 辅助脚本
+├── notion_writer.py                   # Notion 写入工具
 ├── create_notion_dbs.py               # 创建 Notion 数据库结构
 └── notion_config_template.json        # Notion 配置模板
 ```
