@@ -67,6 +67,8 @@ node get_chart_data.mjs YYYY-MM-DD
 
 ### Step 3：调用 DeepSeek 深度分析字幕
 
+> ⚠️ **强制规则：此步骤不可跳过。** 无论字幕长短，逐棒分析文本的生成必须由 DeepSeek 完成，Claude 不得自行直接分析字幕内容。原因：5 小时字幕约 60,000+ token，由 Claude 直接处理成本极高。Claude 只负责准备输入、调用脚本、读取结果、写入最终文件。
+
 **此步骤将文字生成任务外包给 DeepSeek，Claude 负责准备数据和调用脚本。**
 
 #### 3a. 清洗 SRT 字幕（去掉时间戳）
